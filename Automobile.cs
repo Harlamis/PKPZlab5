@@ -25,6 +25,7 @@ namespace PKPZlab5
         private uint seats;
         private float zero_to_hundred;
         private Colour color;
+        private int number;
         public Automobile()
         {
             length = 0;
@@ -34,6 +35,12 @@ namespace PKPZlab5
             seats = 0;
             zero_to_hundred = 0;
             color = Colour.Undefined;
+        }
+
+        public int Number
+        {
+            get { return number; }
+            set { number = value; }
         }
         public uint Length
         {
@@ -77,7 +84,7 @@ namespace PKPZlab5
         }
         public bool IsBetterPerformance(Automobile other_car)
         {
-            if ((horsepower > other_car.horsepower) && (zero_to_hundred > other_car.zero_to_hundred))
+            if ((horsepower > other_car.horsepower) && (zero_to_hundred < other_car.zero_to_hundred))
             {
                 return true;
             }
@@ -90,6 +97,10 @@ namespace PKPZlab5
                 return true;
             }
             return false;
+        }
+        public override string ToString()
+        {
+            return $"{Color} car | {Horsepower} hp | {Seats} seats";
         }
     }
 }
